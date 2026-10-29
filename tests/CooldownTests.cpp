@@ -1,4 +1,4 @@
-// 쿨타임 모듈 시험: 틱 번호로만 세는지, 결과가 틱레이트와 무관하게 정해지는지
+// Cooldown module tests: whether it counts only in ticks, and whether results are decided independently of the tick rate
 #include "cooldown/sim/Cooldown.h"
 #include "cooldown/view/CooldownView.h"
 
@@ -20,7 +20,7 @@ int main() {
     CHECK(cooldown::ready(c, 0));
     CHECK(cooldown::readiness(c, 0) == 1.0f);
 
-    // 30틱 쿨타임: 10틱에 쓰면 40틱부터 다시 준비
+    // 30-tick cooldown: used at tick 10, ready again from tick 40
     CHECK(cooldown::tryUse(c, 10, 30));
     CHECK(!cooldown::ready(c, 39));
     CHECK(!cooldown::tryUse(c, 39, 30));
@@ -33,7 +33,7 @@ int main() {
     cooldown::reset(c);
     CHECK(cooldown::ready(c, 41));
 
-    // 상태가 필드로 선언돼 해시에 들어간다 (WorldState 필드로 넣으면 디싱크 검사가 본다)
+    // State is declared as fields and goes into the hash (put it in WorldState fields and the desync check sees it)
     cooldown::Cooldown a, b;
     cooldown::start(a, 5, 60);
     cooldown::start(b, 5, 60);

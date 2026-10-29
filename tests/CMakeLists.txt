@@ -1,7 +1,7 @@
-# 모듈 단위 시험 (프로젝트에 복사되지 않는다). 엔진 코어(mealkit_core)에 링크해 혼자 빌드한다:
-#   cmake -S tests -B build/tests -G Ninja -DMEALKIT_ROOT=<엔진 폴더> -DMEALKIT_HEADLESS_ONLY=ON
+# Module unit tests (not copied into projects). Built standalone linked against the engine core (mealkit_core):
+#   cmake -S tests -B build/tests -G Ninja -DMEALKIT_ROOT=<engine folder> -DMEALKIT_HEADLESS_ONLY=ON
 #   cmake --build build/tests && build\tests\bin\cooldown_tests
-# 모듈 코드는 프로젝트에서처럼 #include "cooldown/..."로 읽는다 (빌드 폴더에 전달 헤더를 만든다).
+# Module code is read with #include "cooldown/..." like in a project (forwarding headers are made in the build folder).
 cmake_minimum_required(VERSION 3.25)
 project(cooldown_tests LANGUAGES CXX)
 file(TO_CMAKE_PATH "${MEALKIT_ROOT}" MEALKIT_ROOT)
