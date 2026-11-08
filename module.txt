@@ -6,4 +6,5 @@ engine 0.5
 title Cooldowns
 summary Tick-based cooldowns for skills and actions, with a fill bar .ui component
 tags gameplay timer ui
+icon timer
 requires
